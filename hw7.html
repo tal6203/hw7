@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator Plus</title>
+    <style>
+        body{
+            text-align: center;
+            background-color:pink;
+            font-size: 40px;
+        }
+        h1{
+          text-decoration: underline;
+        }
+      #question {
+        width: 200px;
+        height: 200px;
+      }
+      input{
+        width: 30px;
+        height: 30px;
+        
+      }
+      #score {
+        color: #008CBA;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculator Plus</h1>
+    <input id="num1" type="number" onchange="change_back_defult()" />&nbsp; +
+    &nbsp;<input id="num2" type="number" onchange="change_back_defult()" /> &nbsp;=
+    &nbsp;<input
+      id="result"
+      type="number"
+      onchange="change_back_defult()"
+    />&nbsp;&nbsp;<span id="answer">?</span>
+    <p>
+      <button type="button" onclick="check_plus()">RESULT</button>
+      &nbsp;&nbsp;Score:&nbsp;<span id="score">0</span>
+    </p>
+    <img id="question" src="Question.png" alt="?" title="?" />
+    <script>
+      counter = 0;
+      answer = document.getElementById("answer");
+      pic_result = document.getElementById("question");
+      function check_plus() {
+        x = parseInt(document.getElementById("num1").value);
+        y = parseInt(document.getElementById("num2").value);
+        result = parseInt(document.getElementById("result").value);
+        if (x + y == result) {
+          pic_result.setAttribute("src", "correct.webp");
+          pic_result.setAttribute("title", "correct");
+          answer.innerHTML = "True";
+          answer.style.color = "#4CAF50";
+          counter = counter + 10;
+          document.getElementById("score").innerHTML = counter;
+        } else {
+          pic_result.setAttribute("src", "wrong.png");
+          pic_result.setAttribute("title", "wrong");
+          answer.innerHTML = "False";
+          answer.style.color = "red";
+          counter = counter - 10;
+          document.getElementById("score").innerHTML = counter;
+        }
+      }
+      function change_back_defult() {
+        pic_result.setAttribute("src", "Question.png");
+        pic_result.setAttribute("title", "question");
+        answer.innerHTML = "?";
+        answer.style.color = "black";
+      }
+    </script>
+  </body>
+</html>
